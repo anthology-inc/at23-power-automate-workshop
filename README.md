@@ -1,2 +1,2 @@
-# at23-power-automate-workshop
-Anthology Together 2023 Power Automate Workship
+# Anthology Together 2023 Power Automate
+Anthology Together 2023 Power Automate Workshop
