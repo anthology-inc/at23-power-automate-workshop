@@ -99,7 +99,7 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 17. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
 18. Verify that your flow completed successfully
 
-## Add an Approval to the flow
+## Add an approval to the flow
 Now we are going to add a simple approval to the flow. The idea is to get the basic flow in place before we complicate things with Anthology Student.
 
 1. Click `Edit` to open the flow in the designer
@@ -126,3 +126,34 @@ Now we are going to add a simple approval to the flow. The idea is to get the ba
 15. Check Microsoft Teams for the approval and approve
 
 ![Screenshot of the Teams approval dialog](screenshots/14.png)
+
+## Add notification of approval outcome to flow
+While the approval flow works as is, we're next going to add flow control to notify a user as to the outcome of the approval.
+
+1. Click `Edit` to open the flow in the designer
+2. Click `+ New step` 
+3. Select `Control` and then select `Condition`
+
+![Screenshot of the control dialog](screenshots/15.png)
+
+4. Select `Outcome`, `is equal to` and Select `Approve` for the value
+
+![Screenshot of the control step](screenshots/16.png)
+
+5. Scroll down to the `Yes` condition and click `Add an action`
+6. Choose Teams and then select `Post message in chat or channel` just like we did previously.
+
+![Screenshot of the Teams step](screenshots/17.png)
+
+7. Use the same configuration for this step as well, execpt in the `Message` field select `Response summary` and then enter in the text `APPROVAL COMMENTS` and select `Responses Comments`
+
+![Screenshot of the Teams message](screenshots/18.png)
+
+8. Scroll down to the `No` condition and apply the same configuration as you did for `Yes` except in the `Message` field replace `APPROVAL COMMENTS` with `REJECTION COMMENTS`
+
+![Screenshot of the Teams message](screenshots/19.png)
+
+9. Test your flow, but this time choose `Automatically` and select `With a recenty used trigger`
+10. Choose the most recently used successful trigger
+11. Check Microsoft Teams for the approval and approve/reject adding a comment
+12. Verify that you received a Teams message with the correct accept/reject message
