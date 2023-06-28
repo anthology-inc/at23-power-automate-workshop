@@ -1,0 +1,1056 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "CnsCustomConnector",
+    "description": "Connector for connecting to Anthology Student",
+    "version": "1.0"
+  },
+  "host": "sisclientweb-800007.campusnexus.cloud",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [],
+  "produces": [],
+  "paths": {
+    "/ds/campusnexus/Students": {
+      "get": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Get Student",
+        "description": "Get Student",
+        "operationId": "GetStudent",
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "$select",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ]
+      }
+    },
+    "/api/commands/Common/Student/get": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "statusCode": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "statusCode"
+                },
+                "headers": {
+                  "type": "object",
+                  "properties": {
+                    "Pragma": {
+                      "type": "string",
+                      "description": "Pragma"
+                    },
+                    "Vary": {
+                      "type": "string",
+                      "description": "Vary"
+                    },
+                    "OData-Version": {
+                      "type": "string",
+                      "description": "OData-Version"
+                    },
+                    "Strict-Transport-Security": {
+                      "type": "string",
+                      "description": "Strict-Transport-Security"
+                    },
+                    "Request-Context": {
+                      "type": "string",
+                      "description": "Request-Context"
+                    },
+                    "Access-Control-Expose-Headers": {
+                      "type": "string",
+                      "description": "Access-Control-Expose-Headers"
+                    },
+                    "X-Frame-Options": {
+                      "type": "string",
+                      "description": "X-Frame-Options"
+                    },
+                    "Cache-Control": {
+                      "type": "string",
+                      "description": "Cache-Control"
+                    },
+                    "Date": {
+                      "type": "string",
+                      "description": "Date"
+                    },
+                    "Server": {
+                      "type": "string",
+                      "description": "Server"
+                    },
+                    "X-AspNet-Version": {
+                      "type": "string",
+                      "description": "X-AspNet-Version"
+                    },
+                    "X-Powered-By": {
+                      "type": "string",
+                      "description": "X-Powered-By"
+                    },
+                    "Content-Type": {
+                      "type": "string",
+                      "description": "Content-Type"
+                    },
+                    "Expires": {
+                      "type": "string",
+                      "description": "Expires"
+                    },
+                    "Content-Length": {
+                      "type": "string",
+                      "description": "Content-Length"
+                    }
+                  },
+                  "description": "headers"
+                },
+                "body": {
+                  "type": "object",
+                  "properties": {
+                    "@odata.context": {
+                      "type": "string",
+                      "description": "@odata.context"
+                    },
+                    "value": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "Id": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Id"
+                          },
+                          "AcgEligReasonCode": {
+                            "type": "string",
+                            "description": "AcgEligReasonCode"
+                          },
+                          "AgencyId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "AgencyId"
+                          },
+                          "AlienNumber": {
+                            "type": "string",
+                            "description": "AlienNumber"
+                          },
+                          "ArAccountStatus": {
+                            "type": "string",
+                            "description": "ArAccountStatus"
+                          },
+                          "ArBalance": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ArBalance"
+                          },
+                          "ArNextTransactionNumber": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ArNextTransactionNumber"
+                          },
+                          "AssignedAdmissionsRepId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "AssignedAdmissionsRepId"
+                          },
+                          "AthleticIdentifier": {
+                            "type": "string",
+                            "description": "AthleticIdentifier"
+                          },
+                          "BestTimeToContact": {
+                            "type": "string",
+                            "description": "BestTimeToContact"
+                          },
+                          "CampusId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "CampusId"
+                          },
+                          "CitizenId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "CitizenId"
+                          },
+                          "City": {
+                            "type": "string",
+                            "description": "City"
+                          },
+                          "CollegeId": {
+                            "type": "string",
+                            "description": "CollegeId"
+                          },
+                          "CountryId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "CountryId"
+                          },
+                          "CountyId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "CountyId"
+                          },
+                          "CreatedDateTime": {
+                            "type": "string",
+                            "description": "CreatedDateTime"
+                          },
+                          "CumulativeGpa": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "CumulativeGpa"
+                          },
+                          "CumulativeGpaPoints": {
+                            "type": "number",
+                            "format": "float",
+                            "description": "CumulativeGpaPoints"
+                          },
+                          "CurrencyCodeId": {
+                            "type": "string",
+                            "description": "CurrencyCodeId"
+                          },
+                          "CurrentLda": {
+                            "type": "string",
+                            "description": "CurrentLda"
+                          },
+                          "DataBlockIndicator": {
+                            "type": "boolean",
+                            "description": "DataBlockIndicator"
+                          },
+                          "DateOfBirth": {
+                            "type": "string",
+                            "description": "DateOfBirth"
+                          },
+                          "DbiModifiedDate": {
+                            "type": "string",
+                            "description": "DbiModifiedDate"
+                          },
+                          "DefaultAddressCode": {
+                            "type": "string",
+                            "description": "DefaultAddressCode"
+                          },
+                          "DefaultMasterStudentAddressId": {
+                            "type": "string",
+                            "description": "DefaultMasterStudentAddressId"
+                          },
+                          "DefaultStudentAddressId": {
+                            "type": "string",
+                            "description": "DefaultStudentAddressId"
+                          },
+                          "Disabled": {
+                            "type": "string",
+                            "description": "Disabled"
+                          },
+                          "DriverLicenseNumber": {
+                            "type": "string",
+                            "description": "DriverLicenseNumber"
+                          },
+                          "DriverLicenseState": {
+                            "type": "string",
+                            "description": "DriverLicenseState"
+                          },
+                          "EmailAddress": {
+                            "type": "string",
+                            "description": "EmailAddress"
+                          },
+                          "EmployerId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "EmployerId"
+                          },
+                          "EmploymentStatusId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "EmploymentStatusId"
+                          },
+                          "ExtraCurricularActivityId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ExtraCurricularActivityId"
+                          },
+                          "FaGradPlusCounselingDate": {
+                            "type": "string",
+                            "description": "FaGradPlusCounselingDate"
+                          },
+                          "FaRigorousHighSchoolProgramCodeId": {
+                            "type": "string",
+                            "description": "FaRigorousHighSchoolProgramCodeId"
+                          },
+                          "FirstName": {
+                            "type": "string",
+                            "description": "FirstName"
+                          },
+                          "FullName": {
+                            "type": "string",
+                            "description": "FullName"
+                          },
+                          "GenderId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "GenderId"
+                          },
+                          "GpaCredits": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "GpaCredits"
+                          },
+                          "HispanicLatino": {
+                            "type": "string",
+                            "description": "HispanicLatino"
+                          },
+                          "HsAcademicGpa": {
+                            "type": "string",
+                            "description": "HsAcademicGpa"
+                          },
+                          "IsActive": {
+                            "type": "boolean",
+                            "description": "IsActive"
+                          },
+                          "IsAllowedBulkRegistrationByTrack": {
+                            "type": "string",
+                            "description": "IsAllowedBulkRegistrationByTrack"
+                          },
+                          "IsBadAddress": {
+                            "type": "boolean",
+                            "description": "IsBadAddress"
+                          },
+                          "IsBadPhone": {
+                            "type": "boolean",
+                            "description": "IsBadPhone"
+                          },
+                          "IsDdVeteran": {
+                            "type": "boolean",
+                            "description": "IsDdVeteran"
+                          },
+                          "IsEftDefaultForStipends": {
+                            "type": "boolean",
+                            "description": "IsEftDefaultForStipends"
+                          },
+                          "IsExcludedCrmIntegration": {
+                            "type": "boolean",
+                            "description": "IsExcludedCrmIntegration"
+                          },
+                          "IsInDistrict": {
+                            "type": "boolean",
+                            "description": "IsInDistrict"
+                          },
+                          "IsSscrError11Received": {
+                            "type": "boolean",
+                            "description": "IsSscrError11Received"
+                          },
+                          "LastActivityDate": {
+                            "type": "string",
+                            "description": "LastActivityDate"
+                          },
+                          "LastInterestDate": {
+                            "type": "string",
+                            "description": "LastInterestDate"
+                          },
+                          "LastModifiedDateTime": {
+                            "type": "string",
+                            "description": "LastModifiedDateTime"
+                          },
+                          "LastModifiedUserId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "LastModifiedUserId"
+                          },
+                          "LastName": {
+                            "type": "string",
+                            "description": "LastName"
+                          },
+                          "LastNameFirstFour": {
+                            "type": "string",
+                            "description": "LastNameFirstFour"
+                          },
+                          "LastStatementBeginDate": {
+                            "type": "string",
+                            "description": "LastStatementBeginDate"
+                          },
+                          "LastStatementCloseDate": {
+                            "type": "string",
+                            "description": "LastStatementCloseDate"
+                          },
+                          "LastStatementDate": {
+                            "type": "string",
+                            "description": "LastStatementDate"
+                          },
+                          "LeadDate": {
+                            "type": "string",
+                            "description": "LeadDate"
+                          },
+                          "LeadSourceId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "LeadSourceId"
+                          },
+                          "LeadTypeId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "LeadTypeId"
+                          },
+                          "MaidenName": {
+                            "type": "string",
+                            "description": "MaidenName"
+                          },
+                          "MaritalStatusId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "MaritalStatusId"
+                          },
+                          "Mi": {
+                            "type": "string",
+                            "description": "Mi"
+                          },
+                          "MiddleName": {
+                            "type": "string",
+                            "description": "MiddleName"
+                          },
+                          "MobilePhoneNumber": {
+                            "type": "string",
+                            "description": "MobilePhoneNumber"
+                          },
+                          "NationalityId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "NationalityId"
+                          },
+                          "NickName": {
+                            "type": "string",
+                            "description": "NickName"
+                          },
+                          "NiStudent": {
+                            "type": "boolean",
+                            "description": "NiStudent"
+                          },
+                          "Note": {
+                            "type": "string",
+                            "description": "Note"
+                          },
+                          "OriginalAssignedAdmissionsRepId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "OriginalAssignedAdmissionsRepId"
+                          },
+                          "OriginalExpectedStartDate": {
+                            "type": "string",
+                            "description": "OriginalExpectedStartDate"
+                          },
+                          "OriginalStartDate": {
+                            "type": "string",
+                            "description": "OriginalStartDate"
+                          },
+                          "OtherEmailAddress": {
+                            "type": "string",
+                            "description": "OtherEmailAddress"
+                          },
+                          "OtherPhoneNumber": {
+                            "type": "string",
+                            "description": "OtherPhoneNumber"
+                          },
+                          "PersonId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "PersonId"
+                          },
+                          "PhoneNumber": {
+                            "type": "string",
+                            "description": "PhoneNumber"
+                          },
+                          "Pin": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "Pin"
+                          },
+                          "PostalCode": {
+                            "type": "string",
+                            "description": "PostalCode"
+                          },
+                          "PostalCodeFirstThree": {
+                            "type": "string",
+                            "description": "PostalCodeFirstThree"
+                          },
+                          "PreviousEducationGpa": {
+                            "type": "string",
+                            "description": "PreviousEducationGpa"
+                          },
+                          "PreviousEducationId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "PreviousEducationId"
+                          },
+                          "ProgramGroupId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ProgramGroupId"
+                          },
+                          "ProgramId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ProgramId"
+                          },
+                          "RawFirstName": {
+                            "type": "string",
+                            "description": "RawFirstName"
+                          },
+                          "RawLastName": {
+                            "type": "string",
+                            "description": "RawLastName"
+                          },
+                          "RawPhoneNumber": {
+                            "type": "string",
+                            "description": "RawPhoneNumber"
+                          },
+                          "SchoolStatusId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "SchoolStatusId"
+                          },
+                          "ShiftId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "ShiftId"
+                          },
+                          "SmsServiceProviderId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "SmsServiceProviderId"
+                          },
+                          "SourceSystem": {
+                            "type": "string",
+                            "description": "SourceSystem"
+                          },
+                          "Ssn": {
+                            "type": "string",
+                            "description": "Ssn"
+                          },
+                          "StartDate": {
+                            "type": "string",
+                            "description": "StartDate"
+                          },
+                          "State": {
+                            "type": "string",
+                            "description": "State"
+                          },
+                          "StatementComment": {
+                            "type": "string",
+                            "description": "StatementComment"
+                          },
+                          "StreetAddress": {
+                            "type": "string",
+                            "description": "StreetAddress"
+                          },
+                          "StreetAddress2": {
+                            "type": "string",
+                            "description": "StreetAddress2"
+                          },
+                          "StudentIdentifier": {
+                            "type": "string",
+                            "description": "StudentIdentifier"
+                          },
+                          "StudentNumber": {
+                            "type": "string",
+                            "description": "StudentNumber"
+                          },
+                          "SubscribeToSms": {
+                            "type": "boolean",
+                            "description": "SubscribeToSms"
+                          },
+                          "Suffix": {
+                            "type": "string",
+                            "description": "Suffix"
+                          },
+                          "SuffixId": {
+                            "type": "string",
+                            "description": "SuffixId"
+                          },
+                          "TitleId": {
+                            "type": "integer",
+                            "format": "int32",
+                            "description": "TitleId"
+                          },
+                          "Veteran": {
+                            "type": "string",
+                            "description": "Veteran"
+                          },
+                          "WorkPhoneNumber": {
+                            "type": "string",
+                            "description": "WorkPhoneNumber"
+                          },
+                          "WorkPhoneNumberExtension": {
+                            "type": "string",
+                            "description": "WorkPhoneNumberExtension"
+                          }
+                        }
+                      },
+                      "description": "value"
+                    }
+                  },
+                  "description": "body"
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get Student By Id",
+        "description": "Get Student By Id",
+        "operationId": "GetStudentById",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "Student Id"
+                    }
+                  },
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Common/Student/Save": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Update Student",
+        "description": "Update Student",
+        "operationId": "UpdateStudent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Common/Student/SaveNew": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Create Student",
+        "description": "Create Student",
+        "operationId": "CreateStudent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Academics/StudentEnrollmentPeriod/enrollStudent": {
+      "post": {
+        "tags": [
+          "StudentEnrollmentPeriodEntity"
+        ],
+        "summary": "Enroll Student",
+        "operationId": "EnrollStudent",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "payload",
+            "in": "body",
+            "required": true,
+            "description": "Payload for the command",
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "description": "Enroll Student"
+      }
+    },
+    "/api/commands/Academics/StudentEnrollmentPeriod/Get": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Get Enrollment",
+        "description": "Get Enrollment",
+        "operationId": "GetEnrollment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "Enrollment Id"
+                    }
+                  },
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Academics/StudentEnrollmentPeriod/UpdateStudentEnrollmentPeriod": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Update Enrollment",
+        "description": "Update Enrollment",
+        "operationId": "UpdateEnrollment",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Admissions/StudentPreviousEducation/SaveNew": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Create Student Previous Education",
+        "description": "Create Student Previous Education",
+        "operationId": "CreateStudentPreviousEducation",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Admissions/StudentPreviousEducation/Get": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Get Student Previous Education By Id",
+        "description": "Get Student Previous Education By Id",
+        "operationId": "GetStudentPreviousEducationById",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    }
+                  },
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/Admissions/StudentPreviousEducation/Save": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Update Student Previous Education",
+        "description": "Update Student Previous Education",
+        "operationId": "UpdateStudentPreviousEducation",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {},
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/crm/Document/Get": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "GetDocument",
+        "description": "Get Document Info",
+        "operationId": "GetDocument",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "Id": {
+                      "type": "string",
+                      "description": "Id"
+                    }
+                  },
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "/api/commands/crm/Document/Save": {
+      "post": {
+        "responses": {
+          "default": {
+            "description": "default",
+            "schema": {}
+          }
+        },
+        "summary": "Update Student Document",
+        "description": "Update Student Document",
+        "operationId": "UpdateStudentDocument",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": false,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "payload": {
+                  "type": "object",
+                  "properties": {
+                    "approvedDate": {
+                      "type": "string",
+                      "description": "approvedDate"
+                    },
+                    "createdDateTime": {
+                      "type": "string",
+                      "description": "createdDateTime"
+                    },
+                    "documentImage": {
+                      "type": "string",
+                      "description": "documentImage"
+                    },
+                    "documentScheduleId": {
+                      "type": "string",
+                      "description": "documentScheduleId"
+                    },
+                    "documentStatusId": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "documentStatusId"
+                    },
+                    "documentTypeId": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "documentTypeId"
+                    },
+                    "dueDate": {
+                      "type": "string",
+                      "description": "dueDate"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "id"
+                    },
+                    "moduleId": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "moduleId"
+                    },
+                    "note": {
+                      "type": "string",
+                      "description": "note"
+                    },
+                    "originalFileName": {
+                      "type": "string",
+                      "description": "originalFileName"
+                    },
+                    "receivedDate": {
+                      "type": "string",
+                      "description": "receivedDate"
+                    },
+                    "requestedDate": {
+                      "type": "string",
+                      "description": "requestedDate"
+                    },
+                    "rowVersion": {
+                      "type": "string",
+                      "description": "rowVersion"
+                    },
+                    "studentEnrollmentPeriodId": {
+                      "type": "string",
+                      "description": "studentEnrollmentPeriodId"
+                    },
+                    "studentId": {
+                      "type": "integer",
+                      "format": "int32",
+                      "description": "studentId"
+                    }
+                  },
+                  "description": "payload"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "definitions": {},
+  "parameters": {},
+  "responses": {},
+  "securityDefinitions": {
+    "API Key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "ApiKey"
+    }
+  },
+  "security": [
+    {
+      "API Key": []
+    }
+  ],
+  "tags": []
+}
