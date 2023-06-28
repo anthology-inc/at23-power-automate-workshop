@@ -8,6 +8,8 @@ or via the Anthology Student Workflow Engine. This workflow will accept paramete
 which are used to query Anthology Student and initiate a approval workflow that
 notifies a user via Microsoft Teams, prompts for their approval or disapproval, and then updates Anthology Student accordingly.
 
+---
+
 ## Start by create a simple flow and testing it
 
 We'll start by creating a very simple flow with an HTTP trigger and a single action which will post a message to Microsoft Teams. We are going to keep this flow purposely simple. Don't worry because we'll be adding complexity incrementally throughout the workshop.
@@ -50,6 +52,8 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 21. Verify that your flow completed successfully
 
 ![Screenshot of the test run](screenshots/07.png)
+
+---
 
 ## Enhance the simple flow to add parameters
 
@@ -99,6 +103,8 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 17. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
 18. Verify that your flow completed successfully
 
+---
+
 ## Add an approval to the flow
 Now we are going to add a simple approval to the flow. The idea is to get the basic flow in place before we complicate things with Anthology Student.
 
@@ -126,6 +132,8 @@ Now we are going to add a simple approval to the flow. The idea is to get the ba
 15. Check Microsoft Teams for the approval and approve
 
 ![Screenshot of the Teams approval dialog](screenshots/14.png)
+
+---
 
 ## Add notification of approval outcome to flow
 While the approval flow works as is, we're next going to add flow control to notify a user as to the outcome of the approval.
@@ -157,6 +165,8 @@ While the approval flow works as is, we're next going to add flow control to not
 10. Choose the most recently used successful trigger
 11. Check Microsoft Teams for the approval and approve/reject adding a comment
 12. Verify that you received a Teams message with the correct accept/reject message
+
+---
 
 ## Adding Anthology Student Connector
 We now have a basic flow with a HTTP trigger, an initial notification, an approval workflow and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
