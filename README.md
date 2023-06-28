@@ -98,3 +98,31 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 16. In Postman click `Send`
 17. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
 18. Verify that your flow completed successfully
+
+## Add an Approval to the flow
+Now we are going to add a simple approval to the flow. The idea is to get the basic flow in place before we complicate things with Anthology Student.
+
+1. Click `Edit` to open the flow in the designer
+2. Click `+ New step` 
+3. Enter `approval` in the search box
+4. Select `Create an approval`
+
+![Screenshot of the choose an operation dialog](screenshots/11.png)
+5. Select `Approve/Reject - First to respond` in the `Approval type` field
+6. Enter `Approval Request` in the `Title` field
+7. Enter your email address in the `Assigned to` field
+8. Enter `Need Approval ASAP!` in the `Details` field
+
+![Screenshot of the approval dialog](screenshots/12.png)
+9. Click `+ New step` 
+10. Enter 'approval' in the search box
+11. Select `Wait for approval`
+12. Select `Approval ID` in the `Approval ID` field
+
+![Screenshot of the approval dialog](screenshots/13.png)
+
+13. Test your flow, but this time choose `Automatically` and select `With a recenty used trigger`
+14. Choose the most recently used successful trigger
+15. Check Microsoft Teams for the approval and approve
+
+![Screenshot of the Teams approval dialog](screenshots/14.png)
