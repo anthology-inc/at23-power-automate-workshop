@@ -45,4 +45,4 @@ notifies a user via Microsoft Teams, prompts for their approval or disapproval, 
 20. Verify that you received a chat message in Teams.
 21. Verify that your workflow completed successfully.
 
-![Screenshot of the test run](screenshots/06.png)
+![Screenshot of the test run](screenshots/07.png)
