@@ -157,3 +157,23 @@ While the approval flow works as is, we're next going to add flow control to not
 10. Choose the most recently used successful trigger
 11. Check Microsoft Teams for the approval and approve/reject adding a comment
 12. Verify that you received a Teams message with the correct accept/reject message
+
+## Adding Anthology Student Connector
+We now have a basic flow with a HTTP trigger, an initial notification, an approval workflow and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
+
+1. Navigation to `Data` > `Custom Connectors`
+2. Click `+ New custom connector` > `Import an OpenAPI file`
+3. Name the custom connector `AT23 Anthology Student` and import the the OpenAPI file from [anthology-student-connector.json](resources/anthology-student-connector.json)
+
+![Screenshot of the new custom connector dialog](screenshots/20.png)
+
+4. Accept the defaults on the `General information` screen and click `Security ->` at the bottom of the screen
+
+![Screenshot of the connector general info screen](screenshots/21.png)
+
+5. Accept the defaults on the Security screen and click `Definition ->`
+6. Click the Check at the top of the screen to save the custom connection
+
+![Screenshot of the connector final screen](screenshots/22.png)
+
+7. Now we are prepared to use this custom connection in our Flow.
