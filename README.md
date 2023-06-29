@@ -8,6 +8,9 @@ or via the Anthology Student Workflow Engine. This workflow will accept paramete
 which are used to query Anthology Student and initiate a approval workflow that
 notifies a user via Microsoft Teams, prompts for their approval or disapproval, and then updates Anthology Student accordingly.
 
+### What you will need
+In order to participate in this workshop participants will need an Azure tenet  with Power Automate and Microsoft Teams. Participants will also need software (eitehr command line or other) capable of sending HTTP POST request to URLs. We will be using [Postman](https://www.postman.com/downloads/) thoughout this guide.
+
 ---
 
 ## Start by create a simple flow and testing it
