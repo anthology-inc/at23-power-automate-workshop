@@ -248,3 +248,8 @@ Now that the JSON schema has been updated and tested, we can add Anthology Stude
 
 ![Screenshot of the Get Document action](screenshots/29.png)
 
+9. Save the flow
+10. Verity it looks like this:
+
+![Screenshot of the current flow](screenshots/30.png)
+
