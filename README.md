@@ -305,3 +305,32 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 22. Verify that the approval request includes the appropriate values from the Anthology Student API requests
 
 ![Screenshot of the updated approval request](screenshots/35.png)
+
+---
+
+## Update Anthology Student via the API based upon the approval workflow
+Now we get to close the loop! Based upon the result of the approval, we are going to update Anthology Student via the API to change the status of the document.
+
+Note: Some of the data will we use in the step will be particular to your environment. Specifically, we'll use the `Document Status` which may vary implementation to implementation.
+
+1. Expand the Condition step and then expand the `Apply to` step  in the `If yes` block
+
+![Screenshot of the If yes block](screenshots/36.png)
+
+2. Click `Add an action` after the `Post message in chat or channel` action
+3. Choose `Custom`, select `AT23 Anthology Student`, then choose `Update Student Document`
+
+![Screenshot of the Update Student Document dialog](screenshots/37.png)
+
+4. Select `Completion Date` for the `approvedDate` field
+5. Select `Response Comments` for the `note` field
+6. Enter the integer value for your Anthology Student instance's `Approved` status in the `documentStatusId` field
+7. Map all the remaining fields to the `Document` instance retrieved via the API previously using the following expression:
+
+```javascript
+outputs('GetDocument')?['body/payload/data/<FIELDNAMEHERE>']
+```
+
+8. Repeaat the steps above for `Denied` using the integer value for your Anthology Student instance's `Denited` status in the `documentStatusId` field
+9. Test the flow
+10. Verify that the appropriate Document was updated in Anthology Student accordingly
