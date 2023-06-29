@@ -13,9 +13,9 @@ In order to participate in this workshop participants will need an Azure tenet  
 
 ---
 
-## Start by create a simple flow and testing it
+## Start by creating a simple flow and testing it
 
-We'll start by creating a very simple flow with an HTTP trigger and a single action which will post a message to Microsoft Teams. We are going to keep this flow purposely simple. Don't worry because we'll be adding complexity incrementally throughout the workshop.
+We'll start by creating a very simple flow with an HTTP trigger and a single action that will post a message to Microsoft Teams. We are going to keep this flow purposely simple. Don't worry because we'll be adding complexity incrementally throughout the workshop.
 
 1. In your browser navigate to https://make.powerautomate.com
 2. Login using your credentials
@@ -35,7 +35,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ![Screenshot of the choose an operation dialog](screenshots/04.png)
 
-10. Select `Flow bot` form the `Choose Post` field
+10. Select `Flow bot` from the `Choose Post` field
 11. Select `Chat with Flow bot` in the `Post in` field
 12. Enter in your email address in the `Recipient` field
 13. Enter `Hello World!` in the `Message` field.
@@ -49,7 +49,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 16. Copy the URL
 17. Save your flow
-18. Test your flow by clicking on `Test`, hoosing `Manually`, and then clicking `Test`
+18. Test your flow by clicking on `Test`, choosing `Manually`, and then clicking `Test`
 19. Open a browser tab, paste in the HTTP URL and hit enter
 20. Verify that you received a chat message in Teams
 21. Verify that your flow completed successfully
@@ -60,7 +60,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ## Enhance the simple flow to add parameters
 
-Now we're going to make a simple change to our flow. Testing it will be a bit more complicated because we'll be making an HTTP Post instead of a simple GET. Thus, well need a tool like [Postman](https://www.postman.com/downloads/) to test it. If you don't have Postman installed, you'll want to do that first.
+Now we're going to make a simple change to our flow. Testing it will be a bit more complicated because we'll be making an HTTP Post instead of a simple GET. Thus, we need a tool like [Postman](https://www.postman.com/downloads/) to test it. If you don't have Postman installed, you'll want to do that first.
 
 1. Click `Edit` to open up the flow.
 2. Expand the `When an HTTP request is received` trigger
@@ -122,7 +122,7 @@ Now we are going to add a simple approval to the flow. The idea is to get the ba
 
 ![Screenshot of the approval dialog](screenshots/12.png)
 
-9. Test your flow, but this time choose `Automatically` and select `With a recenty used trigger`
+9. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
 10. Choose the most recently used successful trigger
 11. Check Microsoft Teams for the approval and approve
 
@@ -148,7 +148,7 @@ While the approval flow works as is, we're next going to add flow control to not
 
 ![Screenshot of the Teams step](screenshots/17.png)
 
-7. Use the same configuration for this step as well, execpt in the `Message` field select `Response summary` and then enter in the text `APPROVAL COMMENTS` and select `Responses Comments`
+7. Use the same configuration for this step as well, except in the `Message` field select `Response summary` and then enter in the text `APPROVAL COMMENTS` and select `Responses Comments`
 
 ![Screenshot of the Teams message](screenshots/18.png)
 
@@ -156,7 +156,7 @@ While the approval flow works as is, we're next going to add flow control to not
 
 ![Screenshot of the Teams message](screenshots/19.png)
 
-9. Test your flow, but this time choose `Automatically` and select `With a recenty used trigger`
+9. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
 10. Choose the most recently used successful trigger
 11. Check Microsoft Teams for the approval and approve/reject adding a comment
 12. Verify that you received a Teams message with the correct accept/reject message
@@ -164,11 +164,11 @@ While the approval flow works as is, we're next going to add flow control to not
 ---
 
 ## Add Anthology Student Connector
-We now have a basic flow with a HTTP trigger, an initial notification, an approval workflow and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
+We now have a basic flow with an HTTP trigger, an initial notification, an approval workflow, and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
 
 1. Navigation to `Data` > `Custom Connectors`
 2. Click `+ New custom connector` > `Import an OpenAPI file`
-3. Name the custom connector `AT23 Anthology Student` and import the the OpenAPI file from [anthology-student-connector.json](resources/anthology-student-connector.json)
+3. Name the custom connector `AT23 Anthology Student` and import the OpenAPI file from [anthology-student-connector.json](resources/anthology-student-connector.json)
 
 ![Screenshot of the new custom connector dialog](screenshots/20.png)
 
@@ -185,12 +185,12 @@ We now have a basic flow with a HTTP trigger, an initial notification, an approv
 
 ---
 
-## Modify the input schema and test output
-Having created our custom connector to Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being property posted.
+## Modify the input schema and test the output
+Having created our custom connector to Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being properly posted.
 
 1. Edit the flow, and then expand the `When a HTTP request is received` trigger
 2. Remove the `message` parameter from the `JSON Schema`.
-3. Add a two new properties to the `JSON Schema`: An `integer` named `studentId` and an `integer` named `documentId`.
+3. Add two new properties to the `JSON Schema`: An `integer` named `studentId` and an `integer` named `documentId`.
 
 ![Screenshot of the HTTP trigger dialog](screenshots/23.png)
 
@@ -212,17 +212,17 @@ Your completed JSON Schema should look like this:
 
 4. Update the `Post message in chat or channel` action to remove the `message` from the `Message` field.
 5. Save the flow (this is required for us to access the new parameters)
-6. Update the `Message` field to include the new parameters we added to the `JSON Schema`, `studentId` and `documentId`.
+6. Update the `Message` field to include the new parameters we added to the `JSON Schema`, `studentId`, and `documentId`.
 
 ![Screenshot of the Post message in chat or channel action](screenshots/24.png)
 
 7. Save the flow
-8. Since we changed the `JSON Schema` we need to go back to `Postman` and update the requst body to include those fields.
+8. Since we changed the `JSON Schema` we need to go back to `Postman` and update the request body to include those fields.
 
 ![Screenshot of the Postman body](screenshots/25.png)
 
 9. Test the flow `Manually` (because the posted data has changed) and submit the API call via Postman to initiate the HTTP `POST`
-10. Verify that the message you received in Microsoft Teams incluces the appropriate `studentId` and `documentId`
+10. Verify that the message you received in Microsoft Teams includes the appropriate `studentId` and `documentId`
 11. Verify that the approval flow works as it did previously
 
 ---
@@ -261,7 +261,7 @@ Now that the JSON schema has been updated and tested, we can add Anthology Stude
 ## Use data from the Anthology Student API Calls
 Having added Anthology Student API calls to the flow, we now need to ensure that they work. We'll start with some simple variables which will be populated from the returned API data. We'll then use these variables in the Microsoft Teams approval workflow.
 
-Note: You will need the ApiKey from your Anthology Student instance in order to initiate the connection. Edit your connection from the `Connections` screen. This workshop assumes your connection was initiated when you imported the the `OpenAPI` file.
+Note: You will need the ApiKey from your Anthology Student instance in order to initiate the connection. Edit your connection from the `Connections` screen. This workshop assumes your connection was initiated when you imported the `OpenAPI` file.
 
 1. Click `Insert a new step` after the `Get Document` step
 2. Type in `var` in the search box and then select `Initialize variable`
@@ -270,7 +270,7 @@ Note: You will need the ApiKey from your Anthology Student instance in order to 
 
 3. Enter `URL` in the `Name` field
 4. Select `string` in the `Type` field 
-5. Enter in the full URL to your Anthology Student enviroment in the `Value` field
+5. Enter the full URL to your Anthology Student environment in the `Value` field
 
 ![Screenshot of the URL variable step](screenshots/32.png)
 
@@ -281,10 +281,10 @@ Note: You will need the ApiKey from your Anthology Student instance in order to 
 
 ![Screenshot of the Link variable step](screenshots/33.png)
 
-10. Repeate the above instructions to add a new `Initialize variabel` step below the `Link` variabe
+10. Repeat the above instructions to add a new `Initialize variable` step below the `Link` variable
 11. Enter `Name` in the `Name` field
 12. Select `string` in the `Type` field
-13. In the value field enter the follwing expression:
+13. In the value field enter the following expression:
 
 ```javascript
 concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Student_By_Id')['payload/data']['LastName'])
@@ -299,19 +299,19 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 
 18. Save the flow
 
-19. In Postman, update the `studentId` and `documentId` to values from a record in your Anthology Student enviroment
+19. In Postman, update the `studentId` and `documentId` to values from a record in your Anthology Student environment
 20. `Manually` test the flow
-21. Invoke the requst in Postman
+21. Invoke the request in Postman
 22. Verify that the approval request includes the appropriate values from the Anthology Student API requests
 
 ![Screenshot of the updated approval request](screenshots/35.png)
 
 ---
 
-## Update Anthology Student via the API based upon the approval workflow
-Now we get to close the loop! Based upon the result of the approval, we are going to update Anthology Student via the API to change the status of the document.
+## Update Anthology Student via the API based on the approval workflow
+Now we get to close the loop! Based on the result of the approval, we are going to update Anthology Student via the API to change the status of the document.
 
-Note: Some of the data will we use in the step will be particular to your environment. Specifically, we'll use the `Document Status` which may vary implementation to implementation.
+Note: Some of the data will we use in the step will be particular to your environment. Specifically, we'll use the `Document Status` which may vary from implementation to implementation.
 
 1. Expand the Condition step and then expand the `Apply to` step  in the `If yes` block
 
@@ -331,6 +331,6 @@ Note: Some of the data will we use in the step will be particular to your enviro
 outputs('GetDocument')?['body/payload/data/<FIELDNAMEHERE>']
 ```
 
-8. Repeaat the steps above for `Denied` using the integer value for your Anthology Student instance's `Denited` status in the `documentStatusId` field
+8. Repeat the steps above for `Denied` using the integer value for your Anthology Student instance's `Denited` status in the `documentStatusId` field
 9. Test the flow
 10. Verify that the appropriate Document was updated in Anthology Student accordingly
