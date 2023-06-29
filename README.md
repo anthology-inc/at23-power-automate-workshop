@@ -76,20 +76,17 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 ```
 5. Expand the `Post a message in chat or channel` action
 6. Remove `Hello World!` from the field
-7. Choose `Select parameter`
 8. Select the `message` parameter
 
-![Screenshot of selecting parameters](screenshots/08.png)
+![Screenshot of parameter dialog](screenshots/13.png)
 
-9. Enter in `Hello World` and `Hello World` when prompted to give a format example
-10. Click `Get expression` and click `Apply`
-11. Save the flow
-12. Create a new Postman collection by pasting the URL and choosing `POST` as the method.
+9. Save the flow
+10. Create a new Postman collection by pasting the URL and choosing `POST` as the method.
 
 ![Screenshot of Postman request screen](screenshots/09.png)
 
-13. Select the `Body` tab in the Postman request and choose the `raw` content type.
-14. Past in the following JSON:
+11. Select the `Body` tab in the Postman request and choose the `raw` content type.
+12. Past in the following JSON:
 
 ```json
 {
@@ -98,10 +95,10 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 ```
 ![Screenshot of Postman body screen](screenshots/10.png)
 
-15. Back in Power Automate, manually Test your flow
-16. In Postman click `Send`
-17. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
-18. Verify that your flow completed successfully
+13. Back in Power Automate, manually Test your flow
+14. In Postman click `Send`
+15. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
+16. Verify that your flow completed successfully
 
 ---
 
