@@ -252,7 +252,53 @@ Now that the JSON schema has been updated and tested, we can add Anthology Stude
 ![Screenshot of the Get Document action](screenshots/29.png)
 
 9. Save the flow
-10. Verity it looks like this:
+10. Verify it looks like this:
 
 ![Screenshot of the current flow](screenshots/30.png)
 
+---
+
+## Test Anthology Student API Calls
+Having added Anthology Student API calls to the flow, we now need to ensure that they work. We'll start with some simple variables which will be populated from the returned API data. We'll then use these variables in the Microsoft Teams approval workflow.
+
+Note: You will need the ApiKey from your Anthology Student instance in order to initiate the connection. Edit your connection from the `Connections` screen. This workshop assumes your connection was initiated when you imported the the `OpenAPI` file.
+
+1. Click `Insert a new step` after the `Get Document` step
+2. Type in `var` in the search box and then select `Initialize variable`
+
+![Screenshot of the variable dialog](screenshots/31.png)
+
+3. Enter `URL` in the `Name` field
+4. Select `string` in the `Type` field 
+5. Enter in the full URL to your Anthology Student enviroment in the `Value` field
+
+![Screenshot of the URL variable step](screenshots/32.png)
+
+6. Repeat the above instructions to add a new `Initialize variable` step below the `URL` variable
+7. Enter `Link` in the `Name` field
+8. Select `string` in the `Type` field
+9. Use the `URL` variable, the `studentId` parameter, and the `documentId` parameter to construct the link to the Student Document in Anthology Student.
+
+![Screenshot of the Link variable step](screenshots/33.png)
+
+10. Repeate the above instructions to add a new `Initialize variabel` step below the `Link` variabe
+11. Enter `Name` in the `Name` field
+12. Select `string` in the `Type` field
+13. In the value field enter the follwing expression:
+
+```javascript
+concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Student_By_Id')['payload/data']['LastName'])
+```
+
+14. Expand the `Start and wait for approval` step
+15. Update the `Details` field to include the `Name` variable
+16. Update the `Item link` field with the `Link` variable
+17. Update the `Item link description` field with the text `Go to student document`
+
+![Screenshot of the updated start and wait for approvalstep](screenshots/34.png)
+
+18. Save the flow
+
+19. In Postman, update the `studentId` and `documentId` to values from a record in your Anthology Student enviroment
+20. `Manually` test the flow
+21. Invoke the requst in Postman
