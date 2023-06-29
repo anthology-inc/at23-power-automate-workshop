@@ -295,7 +295,7 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 16. Update the `Item link` field with the `Link` variable
 17. Update the `Item link description` field with the text `Go to student document`
 
-![Screenshot of the updated start and wait for approvalstep](screenshots/34.png)
+![Screenshot of the updated start and wait for approval step](screenshots/34.png)
 
 18. Save the flow
 
@@ -303,3 +303,5 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 20. `Manually` test the flow
 21. Invoke the requst in Postman
 22. Verify that the approval request includes the appropriate values from the Anthology Student API requests
+
+![Screenshot of the updated approval request](screenshots/35.png)
