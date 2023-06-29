@@ -258,7 +258,7 @@ Now that the JSON schema has been updated and tested, we can add Anthology Stude
 
 ---
 
-## Test Anthology Student API Calls
+## Use data from the Anthology Student API Calls
 Having added Anthology Student API calls to the flow, we now need to ensure that they work. We'll start with some simple variables which will be populated from the returned API data. We'll then use these variables in the Microsoft Teams approval workflow.
 
 Note: You will need the ApiKey from your Anthology Student instance in order to initiate the connection. Edit your connection from the `Connections` screen. This workshop assumes your connection was initiated when you imported the the `OpenAPI` file.
