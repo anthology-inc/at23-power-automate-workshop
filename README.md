@@ -160,7 +160,7 @@ While the approval flow works as is, we're next going to add flow control to not
 
 ---
 
-## Adding Anthology Student Connector
+## Add Anthology Student Connector
 We now have a basic flow with a HTTP trigger, an initial notification, an approval workflow and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
 
 1. Navigation to `Data` > `Custom Connectors`
@@ -179,3 +179,72 @@ We now have a basic flow with a HTTP trigger, an initial notification, an approv
 ![Screenshot of the connector final screen](screenshots/22.png)
 
 7. Now we are prepared to use this custom connection in our Flow.
+
+---
+
+## Modify the input schema and test output
+Having created our custom connector to Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being property posted.
+
+1. Edit the flow, and then expand the `When a HTTP request is received` trigger
+2. Remove the `message` parameter from the `JSON Schema`.
+3. Add a two new properties to the `JSON Schema`: An `integer` named `studentId` and an `integer` named `documentId`.
+
+![Screenshot of the HTTP trigger dialog](screenshots/23.png)
+
+Your completed JSON Schema should look like this:
+
+```json
+{
+    "type": "object",
+    "properties": {
+        "studentId": {
+            "type": "integer"
+        },
+        "documentId": {
+            "type": "integer"
+        }
+    }
+}
+```
+
+4. Update the `Post message in chat or channel` action to remove the `message` from the `Message` field.
+5. Save the flow (this is required for us to access the new parameters)
+6. Update the `Message` field to include the new parameters we added to the `JSON Schema`, `studentId` and `documentId`.
+
+![Screenshot of the Post message in chat or channel action](screenshots/24.png)
+
+7. Save the flow
+8. Since we changed the `JSON Schema` we need to go back to `Postman` and update the requst body to include those fields.
+
+![Screenshot of the Postman body](screenshots/25.png)
+
+9. Test the flow `Manually` (because the posted data has changed) and submit the API call via Postman to initiate the HTTP `POST`
+10. Verify that the message you received in Microsoft Teams incluces the appropriate `studentId` and `documentId`
+11. Verify that the approval flow works as it did previously
+
+---
+
+## Add Anthology Student API Calls
+
+Now that the JSON schema has been updated and tested, we can add Anthology Student API calls which will make use of these parameters.
+
+1. Insert a new step after the `Post message in chat or channel` action
+2. Select `Custom` and then choose the `AT23 Anthology Student` connector
+3. Select the `Get Student By Id` operation
+
+![Screenshot of the custom action dialog](screenshots/26.png)
+
+4. Select the `studentId` parameter for the `id` field
+
+![Screenshot of the Get Student By Id action](screenshots/27.png)
+
+5. Insert a new step after the `Get Student By Id` action
+6. Select `Custom` and then choose the `AT23 Anthology Student` connector
+7. Select the `Get Document` operation
+
+![Screenshot of the custom action dialog](screenshots/28.png)
+
+8. Select the `documentId` parameter for the `id` field
+
+![Screenshot of the Get Document action](screenshots/29.png)
+
