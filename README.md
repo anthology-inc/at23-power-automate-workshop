@@ -302,3 +302,4 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 19. In Postman, update the `studentId` and `documentId` to values from a record in your Anthology Student enviroment
 20. `Manually` test the flow
 21. Invoke the requst in Postman
+22. Verify that the approval request includes the appropriate values from the Anthology Student API requests
