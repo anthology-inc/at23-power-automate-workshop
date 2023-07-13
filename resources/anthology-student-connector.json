@@ -5,7 +5,7 @@
     "description": "Connector for connecting to Anthology Student v2",
     "version": "1.0"
   },
-  "host": "sisclientweb-800007.campusnexus.cloud",
+  "host": "sisclientweb-900188.campusnexus.dev",
   "basePath": "/",
   "schemes": [
     "https"
@@ -30,6 +30,12 @@
             "in": "query",
             "required": false,
             "type": "string"
+          },
+          {
+            "name": "$top",
+            "in": "query",
+            "required": false,
+            "type": "integer"
           },
           {
             "name": "$select",
