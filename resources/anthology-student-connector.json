@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "CnsCustomConnector",
-    "description": "Connector for connecting to Anthology Student",
+    "description": "Connector for connecting to Anthology Student v2",
     "version": "1.0"
   },
   "host": "sisclientweb-800007.campusnexus.cloud",
