@@ -22,8 +22,8 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ![Screenshot of the Power Automate Dashboard](screenshots/01.png)
 
-3. Mouseover `New flow` and then choose `Instant Flow`
-4. Name your flow AT23 Document Approval
+3. Mouseover `New flow` and then choose `Instant Cloud Flow`
+4. Name your flow "AT23 Document Approval"
 5. Select the `When an HTTP request is received` trigger
 6. Click `Create`
 
@@ -38,6 +38,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 10. Select `Flow bot` from the `Choose Post` field
 11. Select `Chat with Flow bot` in the `Post in` field
 12. Enter in your email address in the `Recipient` field
+    (Use a recepient in your sandbox or target environment)
 13. Enter `Hello World!` in the `Message` field.
 
 ![Screenshot of the post a message dialog](screenshots/05.png)
