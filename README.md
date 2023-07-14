@@ -59,6 +59,12 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ---
 
+(Screenshot of a Teams message received using Edge browser logged into a Sandbox user account.)
+
+![Screenshot of the Team chat](screenshots/07b.png)
+
+---
+
 ## Enhance the simple flow to add parameters
 
 Now we're going to make a simple change to our flow. Testing it will be a bit more complicated because we'll be making an HTTP Post instead of a simple GET. Thus, we need a tool like [Postman](https://www.postman.com/downloads/) to test it. If you don't have Postman installed, you'll want to do that first.
@@ -103,6 +109,11 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 14. In Postman click `Send`
 15. Verify that you received a chat message in Teams that says `Hello from Anthology Together 2023!`
 16. Verify that your flow completed successfully
+---
+
+(Screenshot of a Teams message received using Edge browser logged into a Sandbox user account.)
+
+![Screenshot of the Team chat](screenshots/10b.png)
 
 ---
 
@@ -117,9 +128,9 @@ Now we are going to add a simple approval to the flow. The idea is to get the ba
 ![Screenshot of the choose an operation dialog](screenshots/11.png)
 
 5. Select `Approve/Reject - First to respond` in the `Approval type` field
-6. Enter `Approval Request` in the `Title` field
+6. Enter `Approval Requested` in the `Title` field
 7. Enter your email address in the `Assigned to` field
-8. Enter `Need Approval ASAP!` in the `Details` field
+8. Enter `Approval Required ASAP` in the `Details` field
 
 ![Screenshot of the approval dialog](screenshots/12.png)
 
@@ -178,11 +189,35 @@ We now have a basic flow with an HTTP trigger, an initial notification, an appro
 ![Screenshot of the connector general info screen](screenshots/21.png)
 
 5. Accept the defaults on the Security screen and click `Definition ->`
-6. Click the Check at the top of the screen to save the custom connection
 
-![Screenshot of the connector final screen](screenshots/22.png)
+![Screenshot of the connector screen](screenshots/22.png)
 
-7. Now we are prepared to use this custom connection in our Flow.
+6. Click the Check at the top of the screen to save the custom connector
+
+7. Once it is saved, Click "Close" to exit this connector
+
+---
+
+## Add Anthology Student Connection
+We now that we have defined a connector, we need to configure a "connection" based on this connector. Using this connection, we will be able to make API calls to Anthology Student.
+
+1. Navigation to `Data` > `Custom Connectors`
+
+2. Click `+` next to your new connector `AT23 Anthology Student`
+
+![Screenshot of the create connection screen](screenshots/22b.png)
+
+3. Copy and paste the API Key value on this input. (The API Key value we will use is the `Application Key` that is generated from the Student Web UI)
+
+![Screenshot of the create connection screen](screenshots/22c.png)
+
+`[The API Key value will be here during the workshop]`
+
+4. Click `Create Connection` 
+
+5. Now we are ready to connect to Student Web
+
+![Screenshot of the available connections](screenshots/22d.png)
 
 ---
 
