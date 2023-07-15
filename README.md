@@ -329,8 +329,9 @@ Note: You will need the ApiKey from your Anthology Student instance in order to 
 
 3. Enter `URL` in the `Name` field
 4. Select `string` in the `Type` field 
-5. Enter the full URL to your Anthology Student environment in the `Value` field
+5. Enter `https://sisclientweb-900188.campusnexus.dev/` in the `Value` field
 
+![Alt text](image.png)
 ![Screenshot of the URL variable step](screenshots/32.png)
 
 6. Repeat the above instructions to add a new `Initialize variable` step below the `URL` variable
@@ -383,13 +384,17 @@ Note: Some of the data will we use in the step will be particular to your enviro
 
 4. Select `Completion Date` for the `approvedDate` field
 5. Select `Response Comments` for the `note` field
-6. Enter the integer value for your Anthology Student instance's `Approved` status in the `documentStatusId` field
+6. Enter `11` for the `documentStatusId` field (this is the Id for `Approved`)
 7. Map all the remaining fields to the `Document` instance retrieved via the API previously using the following expression:
 
 ```javascript
 outputs('GetDocument')?['body/payload/data/<FIELDNAMEHERE>']
 ```
 
-8. Repeat the steps above for `Denied` using the integer value for your Anthology Student instance's `Denited` status in the `documentStatusId` field
+![Screenshot of the Update Studnet dialog](screenshots/38.png)
+
+8. Repeat the steps above for `Denied` using `12` for the `documentStatusId` field
 9. Test the flow
 10. Verify that the appropriate Document was updated in Anthology Student accordingly
+
+![Screenshot of the Update Studnet dialog](screenshots/39.png)
