@@ -221,6 +221,29 @@ We now that we have defined a connector, we need to configure a "connection" bas
 
 ---
 
+## Setup test data in Anthology Student
+Before we can invoke the Anthology Student APIs we need to login to Anthology Student and create a test document.
+
+1. Ensure that you are viewing the Eastlake `EAST` campus and navigate to the `Student` List.
+
+![Screenshot of the student list](screenshots/22e.png)
+
+2. Select any student in the list
+3. In the `Student Profile` expand `Contact Manager` and select `Documents`
+
+![Screenshot of the student document list](screenshots/22f.png)
+
+4. Click `+ New Document`
+5. Select `System` for the value of the `Module` field
+6. Select `AT23 Document` for the value of the `Document` field
+7. Accept the defaults for all other fields
+8. Click `Save`
+9. Expand the URL and make note of the Student and Document Ids
+
+![Screenshot of the student document list](screenshots/22g.png)
+
+---
+
 ## Modify the input schema and test the output
 Having created our custom connector to Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being properly posted.
 
@@ -253,7 +276,7 @@ Your completed JSON Schema should look like this:
 ![Screenshot of the Post message in chat or channel action](screenshots/24.png)
 
 7. Save the flow
-8. Since we changed the `JSON Schema` we need to go back to `Postman` and update the request body to include those fields.
+8. Since we changed the `JSON Schema` we need to go back to `Postman` and update the request body to include those fields. Use the values from Anthology Student that you made note of above
 
 ![Screenshot of the Postman body](screenshots/25.png)
 
