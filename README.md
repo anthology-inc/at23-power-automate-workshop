@@ -3,10 +3,8 @@
 This guide is designed to walk workshop participants through the various steps
 of modeling a Power Automate workflow that communicates with Anthology Student
 and Microsoft Teams. By the completion of the workshop, participants will have
-completed a functional Power Automate workflow that can be initiated manually
-or via the Anthology Student Workflow Engine. This workflow will accept parameters
-which are used to query Anthology Student and initiate a approval workflow that
-notifies a user via Microsoft Teams, prompts for their approval or disapproval, and then updates Anthology Student accordingly.
+a functional Power Automate workflow that can be initiated via an HTTP Trigger 
+( which can be invoked via the Anthology Student Workflow Engine). This workflow will accept parameters that are used to query Anthology Student and initiate a approval workflow that notifies a user via Microsoft Teams, prompts for their approval or disapproval, and then updates Anthology Student accordingly.
 
 ### What you will need
 In order to participate in this workshop participants will need an Azure tenet  with Power Automate and Microsoft Teams. Participants will also need software (either command line or other) capable of sending HTTP POST request to URLs. We will be using [Postman](https://www.postman.com/downloads/) thoughout this guide.
@@ -15,7 +13,7 @@ In order to participate in this workshop participants will need an Azure tenet  
 
 ## Start by creating a simple flow and testing it
 
-We'll start by creating a very simple flow with an HTTP trigger and a single action that will post a message to Microsoft Teams. We are going to keep this flow purposely simple. Don't worry because we'll be adding complexity incrementally throughout the workshop.
+We will start by creating a very simple flow with an `HTTP Trigger` and a single action that will post a message to Microsoft Teams. We are going to keep this flow purposely simple. We will be adding complexity incrementally throughout the workshop.
 
 1. In your browser navigate to https://make.powerautomate.com
 2. Login using your credentials
@@ -37,7 +35,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 10. Select `Flow bot` from the `Choose Post` field
 11. Select `Chat with Flow bot` in the `Post in` field
-12. Enter in your email address in the `Recipient` field
+12. Enter in your tenet email address in the `Recipient` field
     (Use a recepient in your sandbox or target environment)
 13. Enter `Hello World!` in the `Message` field.
 
@@ -48,8 +46,8 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ![Screenshot of the when you receive an HTTP request dialog](screenshots/06.png)
 
-16. Copy the URL
-17. Save your flow
+16. Save your flow
+17. Copy the URL from the `HTTP Trigger`
 18. Test your flow by clicking on `Test`, choosing `Manually`, and then clicking `Test`
 19. Open a browser tab, paste in the HTTP URL and hit enter
 20. Verify that you received a chat message in Teams
@@ -59,9 +57,7 @@ We'll start by creating a very simple flow with an HTTP trigger and a single act
 
 ---
 
-(Screenshot of a Teams message received using Edge browser logged into a Sandbox user account.)
-
-![Screenshot of the Team chat](screenshots/07b.png)
+![Screenshot of a Teams message received using Edge browser logged into a Sandbox user account](screenshots/07b.png)
 
 ---
 
@@ -91,7 +87,7 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 ![Screenshot of parameter dialog](screenshots/13.png)
 
 9. Save the flow
-10. Create a new Postman collection by pasting the URL and choosing `POST` as the method.
+10. In Postman (or a tool of your choice) pastie the URL and choose `POST` as the method.
 
 ![Screenshot of Postman request screen](screenshots/09.png)
 
@@ -111,14 +107,12 @@ Now we're going to make a simple change to our flow. Testing it will be a bit mo
 16. Verify that your flow completed successfully
 ---
 
-(Screenshot of a Teams message received using Edge browser logged into a Sandbox user account.)
-
-![Screenshot of the Team chat](screenshots/10b.png)
+![Screenshot of a Teams message received using Edge browser logged into a Sandbox user account.](screenshots/10b.png)
 
 ---
 
 ## Add an approval to the flow
-Now we are going to add a simple approval to the flow. The idea is to get the basic flow in place before we complicate things with Anthology Student.
+Now we are going to add a simple approval to the flow. The idea is to get the basic flow in place before we complicate things with Anthology Student API calls.
 
 1. Click `Edit` to open the flow in the designer
 2. Click `+ New step` 
@@ -134,11 +128,14 @@ Now we are going to add a simple approval to the flow. The idea is to get the ba
 
 ![Screenshot of the approval dialog](screenshots/12.png)
 
-9. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
-10. Choose the most recently used successful trigger
-11. Check Microsoft Teams for the approval and approve
+9. Save the flow
+10. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
+11. Choose the most recently used successful trigger
+12. Check Microsoft Teams for the approval and approve
 
 ![Screenshot of the Teams approval dialog](screenshots/14.png)
+
+13. Verify that the flow completed successfully
 
 ---
 
@@ -164,58 +161,49 @@ While the approval flow works as is, we're next going to add flow control to not
 
 ![Screenshot of the Teams message](screenshots/18.png)
 
-8. Scroll down to the `No` condition and apply the same configuration as you did for `Yes` except in the `Message` field replace `APPROVAL COMMENTS` with `REJECTION COMMENTS`
+8. Repeate step #7 for the `No` condition and apply the same configuration as you did for `Yes` except in the `Message` field replace `APPROVAL COMMENTS` with `REJECTION COMMENTS`
 
 ![Screenshot of the Teams message](screenshots/19.png)
 
-9. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
-10. Choose the most recently used successful trigger
-11. Check Microsoft Teams for the approval and approve/reject adding a comment
-12. Verify that you received a Teams message with the correct accept/reject message
-
+9. Save the flow
+10. Test your flow, but this time choose `Automatically` and select `With a recently used trigger`
+11. Choose the most recently used successful trigger
+12. Check Microsoft Teams for the approval and approve/reject adding a comment
+13. Verify that you received a Teams message with the correct accept/reject message
+14. Verify that the flow completed successfully
 ---
 
 ## Add Anthology Student Connector
-We now have a basic flow with an HTTP trigger, an initial notification, an approval workflow, and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
+We now have a basic flow with an HTTP trigger, an debug notification, an approval workflow, and a notification of the outcome of that workflow. We will now begin to add API calls to Anthology Student via a `Connector`.
 
-1. Navigation to `Data` > `Custom Connectors`
+1. Navigate to `Data` > `Custom Connectors`
 2. Click `+ New custom connector` > `Import an OpenAPI file`
 3. Name the custom connector `AT23 Anthology Student` and import the OpenAPI file from [anthology-student-connector.json](resources/anthology-student-connector.json)
 
 ![Screenshot of the new custom connector dialog](screenshots/20.png)
 
-4. Accept the defaults on the `General information` screen and click `Security ->` at the bottom of the screen
+4. Accept all of the defaults on the import wizzard and click the check at the top of the screen to save the custom connector
 
-![Screenshot of the connector general info screen](screenshots/21.png)
-
-5. Accept the defaults on the Security screen and click `Definition ->`
-
-![Screenshot of the connector screen](screenshots/22.png)
-
-6. Click the Check at the top of the screen to save the custom connector
-
-7. Once it is saved, Click "Close" to exit this connector
+5. Once it is saved, click "Close" to exit this connector
 
 ---
 
 ## Add Anthology Student Connection
-We now that we have defined a connector, we need to configure a "connection" based on this connector. Using this connection, we will be able to make API calls to Anthology Student.
+Now that we have defined a `Connector`, we need to configure a `Connection` based on this connector.
 
-1. Navigation to `Data` > `Custom Connectors`
+1. Navigate to `Data` > `Custom Connectors`
 
-2. Click `+` next to your new connector `AT23 Anthology Student`
+2. Click `+` next to the `AT23 Anthology Student` connector
 
 ![Screenshot of the create connection screen](screenshots/22b.png)
 
-3. Copy and paste the API Key value on this input. (The API Key value we will use is the `Application Key` that is generated from the Student Web UI)
+3. Copy and paste the following value in the `API key` input field
 
 ![Screenshot of the create connection screen](screenshots/22c.png)
 
-`[The API Key value will be here during the workshop]`
+`ApplicationKey eyJDYWxsaW5nQXBwTmFtZSI6IktsYXVzIiwiS2V5VmFsdWUiOiJPZ2RjYnRiTUJCblhQWElTUldiNlJRPT0ifQ==`
 
-4. Click `Create Connection` 
-
-5. Now we are ready to connect to Student Web
+4. Click `Create Connection`
 
 ![Screenshot of the available connections](screenshots/22d.png)
 
@@ -224,28 +212,31 @@ We now that we have defined a connector, we need to configure a "connection" bas
 ## Setup test data in Anthology Student
 Before we can invoke the Anthology Student APIs we need to login to Anthology Student and create a test document.
 
-1. Ensure that you are viewing the Eastlake `EAST` campus and navigate to the `Student` List.
+1. Navigate to https://sisclientweb-900188.campusnexus.dev
+2. Login using the credentials you were provided
+3. When prompted to select a default campus select the `Eastlake` campus
+4. avigate to the `Student` List.
 
 ![Screenshot of the student list](screenshots/22e.png)
 
-2. Select any student in the list
-3. In the `Student Profile` expand `Contact Manager` and select `Documents`
+5. Select any student in the list
+6. In the `Student Profile` expand `Contact Manager` and select `Documents`
 
 ![Screenshot of the student document list](screenshots/22f.png)
 
-4. Click `+ New Document`
-5. Select `System` for the value of the `Module` field
-6. Select `AT23 Document` for the value of the `Document` field
-7. Accept the defaults for all other fields
-8. Click `Save`
-9. Expand the URL and make note of the Student and Document Ids
+7. Click `+ New Document`
+8. Select `System` for the value of the `Module` field
+9. Select `AT23 Document` for the value of the `Document` field
+10. Accept the defaults for all other fields
+11. Click `Save`
+12. Expand the URL and make note of the Student and Document Ids
 
 ![Screenshot of the student document list](screenshots/22g.png)
 
 ---
 
 ## Modify the input schema and test the output
-Having created our custom connector to Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being properly posted.
+Having setup our test data in Anthology Student, we can now start to add the actions to invoke Anthology Student APIs. First, however, we need to modify the JSON schema so that we can use the input parameters in our flow and test to make sure the parameters are being properly posted.
 
 1. Edit the flow, and then expand the `When a HTTP request is received` trigger
 2. Remove the `message` parameter from the `JSON Schema`.
@@ -286,7 +277,7 @@ Your completed JSON Schema should look like this:
 
 ---
 
-## Add Anthology Student API Calls
+## Add Anthology Student API calls
 
 Now that the JSON schema has been updated and tested, we can add Anthology Student API calls which will make use of these parameters.
 
@@ -318,9 +309,7 @@ Now that the JSON schema has been updated and tested, we can add Anthology Stude
 ---
 
 ## Use data from the Anthology Student API Calls
-Having added Anthology Student API calls to the flow, we now need to ensure that they work. We'll start with some simple variables which will be populated from the returned API data. We'll then use these variables in the Microsoft Teams approval workflow.
-
-Note: You will need the ApiKey from your Anthology Student instance in order to initiate the connection. Edit your connection from the `Connections` screen. This workshop assumes your connection was initiated when you imported the `OpenAPI` file.
+Having added Anthology Student API calls to the flow, we now need to ensure that they really work. We'll start with some simple variables which will be populated from the returned API data. We'll then use these variables in the Microsoft Teams approval workflow.
 
 1. Click `Insert a new step` after the `Get Document` step
 2. Type in `var` in the search box and then select `Initialize variable`
@@ -331,7 +320,6 @@ Note: You will need the ApiKey from your Anthology Student instance in order to 
 4. Select `string` in the `Type` field 
 5. Enter `https://sisclientweb-900188.campusnexus.dev/` in the `Value` field
 
-![Alt text](image.png)
 ![Screenshot of the URL variable step](screenshots/32.png)
 
 6. Repeat the above instructions to add a new `Initialize variable` step below the `URL` variable
@@ -358,11 +346,9 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 ![Screenshot of the updated start and wait for approval step](screenshots/34.png)
 
 18. Save the flow
-
-19. In Postman, update the `studentId` and `documentId` to values from a record in your Anthology Student environment
-20. `Manually` test the flow
-21. Invoke the request in Postman
-22. Verify that the approval request includes the appropriate values from the Anthology Student API requests
+19. Test your flow `Automatically` and select `With a recently used trigger`
+20. Choose the most recently used successful trigger
+21. Verify that the approval request includes the appropriate values from the Anthology Student API requests
 
 ![Screenshot of the updated approval request](screenshots/35.png)
 
@@ -370,8 +356,6 @@ concat(body('Get_Student_By_Id')['payload/data']['FirstName'],' ',body('Get_Stud
 
 ## Update Anthology Student via the API based on the approval workflow
 Now we get to close the loop! Based on the result of the approval, we are going to update Anthology Student via the API to change the status of the document.
-
-Note: Some of the data will we use in the step will be particular to your environment. Specifically, we'll use the `Document Status` which may vary from implementation to implementation.
 
 1. Expand the Condition step and then expand the `Apply to` step  in the `If yes` block
 
@@ -398,3 +382,5 @@ outputs('GetDocument')?['body/payload/data/<FIELDNAMEHERE>']
 10. Verify that the appropriate Document was updated in Anthology Student accordingly
 
 ![Screenshot of the Update Studnet dialog](screenshots/39.png)
+
+## Congratulations, you have completed the Workshop!
